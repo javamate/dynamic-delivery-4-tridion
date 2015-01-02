@@ -103,14 +103,7 @@ public class DefaultLinkResolver implements LinkResolver {
 				}
 
 			} else {
-				resolvedUrl = replacePlaceholders(resolvedUrl,
-						"%COMPONENTURI%", component.getId());
-				resolvedUrl = replacePlaceholders(resolvedUrl,
-						"%COMPONENTTITLE%", component.getTitle());
-				resolvedUrl = replacePlaceholders(resolvedUrl, "%SCHEMAURI%",
-						schema.getId());
-				resolvedUrl = replacePlaceholders(resolvedUrl, "%SCHEMATITLE%",
-						schema.getTitle());
+				resolvedUrl = updateResolvedUrlPlaceholders(component, resolvedUrl, schema);
 			}
 			if (contextPath != null && contextPath.length() > 0) {
 				resolvedUrl = contextPath + resolvedUrl;			
@@ -119,6 +112,26 @@ public class DefaultLinkResolver implements LinkResolver {
 			component.setResolvedUrl(resolvedUrl);			
 		}
 		
+		return resolvedUrl;
+	}
+
+	/**
+	 * Updates the resolvedUrl by replacing any placeholders with actual values.
+	 * 
+	 * @param component
+	 * @param resolvedUrl
+	 * @param schema
+	 * @return
+	 */
+	protected String updateResolvedUrlPlaceholders(Component component, String resolvedUrl, Schema schema) {
+		resolvedUrl = replacePlaceholders(resolvedUrl,
+				"%COMPONENTURI%", component.getId());
+		resolvedUrl = replacePlaceholders(resolvedUrl,
+				"%COMPONENTTITLE%", component.getTitle());
+		resolvedUrl = replacePlaceholders(resolvedUrl, "%SCHEMAURI%",
+				schema.getId());
+		resolvedUrl = replacePlaceholders(resolvedUrl, "%SCHEMATITLE%",
+				schema.getTitle());
 		return resolvedUrl;
 	}	
 
