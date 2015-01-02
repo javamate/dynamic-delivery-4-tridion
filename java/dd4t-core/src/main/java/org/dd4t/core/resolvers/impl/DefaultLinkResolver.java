@@ -145,7 +145,7 @@ public class DefaultLinkResolver implements LinkResolver {
 		return getLinkProvider().resolveComponentFromPage(componentId, pageId);			
 	}
 
-	private String replacePlaceholders(String resolvedUrl, String placeholder,
+	protected String replacePlaceholders(String resolvedUrl, String placeholder,
 			String replacementText) {
 
 		StringBuffer sb = new StringBuffer();
