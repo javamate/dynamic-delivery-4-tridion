@@ -168,6 +168,8 @@ public class DefaultLinkResolver implements LinkResolver {
 				m.appendReplacement(sb, replacementText);
 			}
 			m.appendTail(sb);
+		} else {
+			return resolvedUrl;
 		}
 		return sb.toString();
 	}
